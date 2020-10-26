@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package protocol;
+message Book{
+    string id = 1;
+    string title = 2;
+    string author = 3;
+    string genre = 4;
+    string edition = 5;
+    int32 numberOfPages = 6;
+    int32 year = 7;
+    int32 amount = 8;
+    bool isPopular = 9;
+    bool inStock = 10;
+}
+message AddRequest{
+    Book book = 1;
+}
+message EmptyResponse{
+
+}
+message DeleteRequest{
+    string id = 1;
+}
+message UpdateRequest{
+    Book book = 1;
+}
+message GetRequest{
+    string id = 1;
+}
+message GetResponse{
+    Book book = 1;
+}
+message EmptyRequest{
+
+}
+message ListingResponse{
+    repeated Book books = 1;
+}
+
+service BookService{
+    rpc Add(AddRequest) returns(EmptyResponse);
+    rpc Delete(DeleteRequest) returns(EmptyResponse);
+    rpc Update(UpdateRequest) returns(EmptyResponse);
+    rpc Get(GetRequest) returns(GetResponse);
+    rpc Listing(EmptyRequest) returns(ListingResponse);
+    rpc DeleteAll(EmptyRequest) returns(EmptyResponse);
+}
+

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package api;
+
+service GetResponse{
+    rpc GiveResponse(GRRequest) returns (GRResponse){}
+}
+message GRRequest{
+    string req = 1;
+}
+message GRResponse{
+    string res = 1;
+}
